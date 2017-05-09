@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+.wiki {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.nav {
+    text-align: center;
+    margin: 0 auto;
+    background-color: lightblue;
+}
+.nav li {
+    display: inline-block;
+}
+.nav li a {
+    padding: 20px;
+    text-transform: uppercase;
+    color: gray;
+}
+.nav li a:hover, .active {
+    background-color: white;
+}
+.main {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.link {
+    display: block;
+}
+.welcome {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    margin: 40px;
+}
+.form input {
+    display: block;
+    margin: 5px 0 10px;
+    width: 300px;
+}
+.form-details {
+    margin: 0 auto;
+    width: 300px;
+}
