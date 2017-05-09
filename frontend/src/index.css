@@ -1,6 +1,11 @@
 body {
   margin: 0;
   padding: 0;
+  background: url('/flamingo.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   font-family: 'Open Sans', sans-serif;
 }
 .wiki {
@@ -10,7 +15,7 @@ body {
 .nav {
     text-align: center;
     margin: 0 auto;
-    background-color: lightblue;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 .nav li {
     display: inline-block;
@@ -21,19 +26,26 @@ body {
     color: gray;
 }
 .nav li a:hover, .active {
-    background-color: white;
+    font-weight: 700;
 }
 .main {
+    padding: 40px 50px;
+    background-color: rgba(255, 255, 255, 0.85);
+    min-height: 500px;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 .link {
     display: block;
 }
+.flamingo {
+    display: block;
+    margin: 0 auto;
+}
 .welcome {
     text-align: center;
     font-family: 'Pacifico', cursive;
-    margin: 40px;
+    margin: 20px 0 40px;
 }
 .form input {
     display: block;
@@ -43,4 +55,11 @@ body {
 .form-details {
     margin: 0 auto;
     width: 300px;
+}
+textarea {
+    padding: 15px;
+    line-height: 1.5em;
+}
+p {
+    line-height: 1.5em;
 }

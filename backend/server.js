@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const pgp = require('pg-promise')();
 const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 const db = pgp({
   database: 'wiki_db'
 });
@@ -51,15 +52,20 @@ app.put('/api/page/:title', (req, resp, next) => {
 app.post('/api/login', (req, resp, next) => {
     let email = req.body.email;
     let password = req.body.password;
-    let userId;
+    let username;
     db.one(`select * from users where email=$1`, email)
         .then(loginDetails => {
-            userId = loginDetails.id;
+            username = loginDetails.username;
             return  bcrypt.compare(password, loginDetails.password);
         })
         .then(matched => {
             if (matched) {
-                resp.json(userId);
+                let token = uuid.v4();
+                let data = {
+                    token: token,
+                    username: username
+                }
+                resp.json(data);
             }
         })
         .catch(next)
@@ -69,12 +75,13 @@ app.post('/api/login', (req, resp, next) => {
 app.post('/api/signup', (req, resp, next) => {
     let email = req.body.email;
     let password = req.body.password;
+    let username = req.body.username;
     bcrypt.hash(password, 10)
         .then(encrypted => {
-            return db.one(`insert into users values (default, $1, $2) returning id`, [email, encrypted]);
+            return db.one(`insert into users values (default, $1, $2, $3) returning username`, [email, encrypted, username]);
         })
-        .then(result => {
-            resp.json(result)
+        .then(username => {
+            resp.json(username)
         })
     .catch(next)
 })

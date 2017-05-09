@@ -29,7 +29,7 @@ class WikiPage extends React.Component {
 
                 {this.props.editing ?
                     <div>
-                        <textarea onChange={(event) => this.props.typing(event)} rows="6" cols="100"></textarea><br />
+                        <textarea onChange={(event) => this.props.typing(event)} rows="15" cols="80">{this.props.content}</textarea><br />
                         <button className="btn btn-info" onClick={()=> this.props.updatePage(this.props.params.title, this.props.content)}>Save</button>
                     </div> :
 

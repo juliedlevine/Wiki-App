@@ -1,7 +1,9 @@
 const INITIAL_STATE = {
+    username: '',
     email: '',
     password: '',
-    loggedIn: false
+    loggedIn: false,
+    token: ''
 };
 
 function reducer(state=INITIAL_STATE, action) {
@@ -13,9 +15,15 @@ function reducer(state=INITIAL_STATE, action) {
         return Object.assign({}, state, {
             password: action.password
         });
+    } else if (action.type === 'userTyping') {
+        return Object.assign({}, state, {
+            username: action.username
+        });
     } else if (action.type === 'successfulLogin') {
         return Object.assign({}, state, {
-            loggedIn: true
+            loggedIn: true,
+            username: action.payload.username,
+            token: action.payload.token
         });
     } else {
         return state;

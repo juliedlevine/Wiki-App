@@ -1,7 +1,6 @@
 import React from 'react';
 import * as actions from './Login.actions';
 import * as ReactRedux from 'react-redux';
-import { Link, IndexLink } from 'react-router';
 
 class Login extends React.Component {
 
@@ -9,9 +8,9 @@ class Login extends React.Component {
         return (
             <div>
                 {this.props.loggedIn ?
-                    <h3 className="welcome">Thanks for logging in!</h3> :
+                    <h3 className="welcome">Thanks for logging in {this.props.username}!</h3> :
                     <div className="form">
-                        <h3 className="welcome">Welcome! Please Login.</h3>
+                        <h3 className="welcome">Please Login.</h3>
                         <div className="form-details">
                             Email: <input onChange={(event) => this.props.emailTyping(event)} type="text" />
                             Password: <input onChange={(event) => this.props.passwordTyping(event)} type="password" />
@@ -29,4 +28,3 @@ const LoginContainer = ReactRedux.connect(
 )(Login);
 
 export default LoginContainer;
-LoginContainer

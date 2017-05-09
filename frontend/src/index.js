@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import * as ReactRedux from 'react-redux';
 import ReduxThunk from 'redux-thunk';
-import {Router, Route, hashHistory, Link, IndexRoute } from 'react-router';
+import {Router, Route, hashHistory, IndexRoute } from 'react-router';
 import './index.css';
 import AppLayout from './AppLayout';
 import Login from './login/Login';

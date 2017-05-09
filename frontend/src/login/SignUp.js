@@ -1,7 +1,6 @@
 import React from 'react';
 import * as actions from './Login.actions';
 import * as ReactRedux from 'react-redux';
-import { Link, IndexLink } from 'react-router';
 
 class SignUp extends React.Component {
 
@@ -9,11 +8,12 @@ class SignUp extends React.Component {
         return (
             <div>
                 {this.props.loggedIn ?
-                    <h3>You've created an account!</h3> :
+                    <h3 className="welcome">You're logged in!</h3> :
 
                     <div className="form">
-                        <h3 className="welcome">Welcome! Please create an account.</h3>
+                        <h3 className="welcome">Please create an account.</h3>
                         <div className="form-details">
+                            Username: <input onChange={(event) => this.props.userTyping(event)} type="text" />
                             Email: <input onChange={(event) => this.props.emailTyping(event)} type="text" />
                             Password: <input onChange={(event) => this.props.passwordTyping(event)} type="password" />
                             <button className="btn btn-info" onClick={()=> this.props.createAccount(this.props.email, this.props.password)}>Create Account</button>
