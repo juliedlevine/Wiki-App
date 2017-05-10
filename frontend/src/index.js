@@ -13,7 +13,6 @@ import Home from './Home.js';
 import WikiPage from './wiki-page/WikiPage';
 import wikiReducer from './wiki-page/WikiPage.reducer';
 
-
 const reducer = Redux.combineReducers({
     wiki: wikiReducer,
     login: loginReducer

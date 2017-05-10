@@ -8,7 +8,10 @@ class SignUp extends React.Component {
         return (
             <div>
                 {this.props.loggedIn ?
-                    <h3 className="welcome">You're logged in!</h3> :
+                    <div>
+                        <img alt="flamingos" className="flamingo" src="/flamingo.png"></img>
+                        <h3 className="welcome">You're logged in {this.props.username}!</h3>
+                    </div> :
 
                     <div className="form">
                         <h3 className="welcome">Please create an account.</h3>
@@ -16,7 +19,7 @@ class SignUp extends React.Component {
                             Username: <input onChange={(event) => this.props.userTyping(event)} type="text" />
                             Email: <input onChange={(event) => this.props.emailTyping(event)} type="text" />
                             Password: <input onChange={(event) => this.props.passwordTyping(event)} type="password" />
-                            <button className="btn btn-info" onClick={()=> this.props.createAccount(this.props.email, this.props.password)}>Create Account</button>
+                            <button className="btn btn-info" onClick={()=> this.props.createAccount(this.props.email, this.props.password, this.props.username)}>Create Account</button>
                         </div>
                     </div>}
             </div>

@@ -7,7 +7,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <img className="flamingo" src="/flamingo.png"></img>
+                <img alt="flamingos" className="flamingo" src="/flamingo.png"></img>
                 <h2 className="welcome">Welcome to AnimalWiki!</h2>
                 <p>To get started take a look at some of the pages below. Feel free to edit any of these pages. Make new pages in the app by creating links in a page's content. To make a link just write any word in CamelCase. Then click that word and edit your new page!</p>
                 <Link to="/page/FlamingoAnimal" activeClassName="active" className="link">Flamingo</Link>

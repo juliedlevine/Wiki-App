@@ -8,7 +8,10 @@ class Login extends React.Component {
         return (
             <div>
                 {this.props.loggedIn ?
-                    <h3 className="welcome">Thanks for logging in {this.props.username}!</h3> :
+                    <div>
+                        <img alt="flamingos" className="flamingo" src="/flamingo.png"></img>
+                        <h3 className="welcome">Thanks for logging in {this.props.username}!</h3>
+                    </div> :
                     <div className="form">
                         <h3 className="welcome">Please Login.</h3>
                         <div className="form-details">

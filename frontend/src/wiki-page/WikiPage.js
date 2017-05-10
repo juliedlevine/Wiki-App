@@ -21,6 +21,8 @@ class WikiPage extends React.Component {
     }
 
     render() {
+        let wiki = this.props.wiki;
+        let login = this.props.login;
 
         let html = wikiLinkify(this.props.content);
         return (
@@ -35,7 +37,14 @@ class WikiPage extends React.Component {
 
                     <div>
                         <p dangerouslySetInnerHTML={{__html: html}}></p>
-                        <button className="btn btn-info" onClick={()=> this.props.toggleEdit()}>Edit</button>
+                        {this.props.loggedIn ?
+                            <button className="btn btn-info" onClick={()=> this.props.toggleEdit()}>Edit</button> :
+                            <div>
+                                <br />
+                                <p>Please login to edit this page!</p>
+                            </div>
+                        }
+
                     </div>}
 
             </div>
@@ -45,7 +54,11 @@ class WikiPage extends React.Component {
 }
 
 const WikiPageContainer = ReactRedux.connect(
-    state => state.wiki,
+    state => ({
+        loggedIn: state.login.loggedIn,
+        content: state.wiki.content,
+        editing: state.wiki.editing
+    }),
     actions
 )(WikiPage);
 

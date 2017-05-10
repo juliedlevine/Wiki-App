@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { hashHistory } from 'react-router'
 
 function pageError(resp) {
     let error = (resp && resp.responseJSON && resp.responseJSON.message) || 'Something went wrong!';
@@ -16,10 +17,13 @@ export function loginButton(email, password) {
                 password: password
             })
         })
-        .then(data => dispatch({
-            type: 'successfulLogin',
-            payload: data
-        }))
+        .then(data => {
+            hashHistory.push('/');
+            dispatch({
+                type: 'successfulLogin',
+                payload: data
+            });
+        })
         .catch(resp => dispatch(pageError(resp)))
     }
     return asyncAction;
@@ -27,6 +31,7 @@ export function loginButton(email, password) {
 
 // Create account button click
 export function createAccount(email, password, username) {
+    console.log('Username', username);
     let asyncAction = function(dispatch) {
         $.ajax({
             type: 'POST',
@@ -38,10 +43,13 @@ export function createAccount(email, password, username) {
                 username: username
             })
         })
-        .then(username => dispatch({
-            type: 'successfulLogin',
-            payload: username
-        }))
+        .then(username => {
+            hashHistory.push('/');
+            dispatch({
+                type: 'successfulLogin',
+                payload: username
+            })
+        })
         .catch(resp => dispatch(pageError(resp)))
     }
     return asyncAction;
